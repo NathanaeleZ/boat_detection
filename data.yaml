@@ -1,0 +1,12 @@
+path: train_platform
+
+# Train/val/test sets: specify directories, *.txt files, or lists
+train: images
+val: images 
+test: # Optional path to test images
+
+# Classes (example using 80 COCO classes)
+names:
+    0: platform
+    1: ship
+

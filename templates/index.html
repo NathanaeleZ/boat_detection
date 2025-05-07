@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="refresh" content="10">
+   <title>Boat Detection</title>
+   <style>
+       body {
+           margin: 0;
+           font-family: 'Courier New', Courier, monospace;
+           background-color: #000; /* Fond noir */
+           color: #00d2be; /* Couleur Petronas */
+       }
+       .container {
+           display: flex;
+           align-items: center;
+           padding: 20px;
+       }
+       .container img {
+           margin-right: 20px;
+           max-width: 700px;
+           border: 2px solid #00d2be; /* Bordure Petronas */
+       }
+       .terminal {
+           background-color: #001f1f; /* Fond sombre pour le terminal */
+           padding: 20px;
+           border-radius: 5px;
+           box-shadow: 0 0 10px #00d2be;
+       }
+       .terminal h2, .terminal pre {
+           margin: 0;
+       }
+       .terminal h2 {
+           margin-bottom: 10px;
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <img src="/runs/obb/predict/photo.jpg?{{ now.timestamp() }}" alt="Satellite image">
+       <div class="terminal">
+           <h2>Boat Detection</h2>
+           <pre>{{text}}</pre>
+       </div>
+   </div>
+</body>
+</html>
