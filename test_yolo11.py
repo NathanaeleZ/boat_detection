@@ -3,11 +3,19 @@ from ultralytics import YOLO
 import numpy as np
 import torch
 
+
+#MODEL_PATH="yolo11m-obb.pt"
+MODEL_PATH="runs/obb/train9/weights/best.pt"
 # Load a model
-model = YOLO("yolo11m-obb.pt")  # load an official model
+model = YOLO(MODEL_PATH)  # load an official model
 
 # Predict with the model
-results = model(source=["images/boat0.jpg"],imgsz=768,conf=0.25,save=True)  # predict on an image
+results = model(source=["images/boat0.jpg"],
+                imgsz=768,
+                conf=0.3,
+                save=True,
+                classes=[1,15]
+                )  # predict on an image
 result=results[0]
 print("YOOOOOO")
 print(result.obb.conf.numel())

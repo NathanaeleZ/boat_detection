@@ -11,6 +11,7 @@
            font-family: 'Courier New', Courier, monospace;
            background-color: #000; /* Fond noir */
            color: #00d2be; /* Couleur Petronas */
+           font-size: 200%;
        }
        .container {
            display: flex;
@@ -21,6 +22,13 @@
            margin-right: 20px;
            max-width: 700px;
            border: 2px solid #00d2be; /* Bordure Petronas */
+       }
+
+       #div_horloge {
+            background-color: #001f1f; /* Fond sombre pour le terminal */
+           padding: 20px;
+           border-radius: 5px;
+           box-shadow: 0 0 10px #00d2be;
        }
        .terminal {
            background-color: #001f1f; /* Fond sombre pour le terminal */
@@ -34,9 +42,32 @@
        .terminal h2 {
            margin-bottom: 10px;
        }
+       h1 {
+        text-align: center;
+       }
    </style>
 </head>
 <body>
+    <h1 id="div_horloge"></h1>
+ 
+<script type="text/javascript">
+window.onload=function() {
+  horloge('div_horloge');
+};
+ 
+function horloge(el) {
+  if(typeof el=="string") { el = document.getElementById(el); }
+  function actualiser() {
+    var date = new Date();
+    var str = date.getHours();
+    str += ':'+(date.getMinutes()<10?'0':'')+date.getMinutes();
+    str += ':'+(date.getSeconds()<10?'0':'')+date.getSeconds();
+    el.innerHTML = str;
+  }
+  actualiser();
+  setInterval(actualiser,1000);
+}
+</script>
    <div class="container">
        <img src="/runs/obb/predict/photo.jpg?{{ now.timestamp() }}" alt="Satellite image">
        <div class="terminal">

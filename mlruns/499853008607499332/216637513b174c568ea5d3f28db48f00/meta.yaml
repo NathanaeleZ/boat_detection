@@ -1,0 +1,15 @@
+artifact_uri: file:///home/cerdas/Project_Orientation/mlruns/499853008607499332/216637513b174c568ea5d3f28db48f00/artifacts
+end_time: 1746694254921
+entry_point_name: ''
+experiment_id: '499853008607499332'
+lifecycle_stage: active
+run_id: 216637513b174c568ea5d3f28db48f00
+run_name: abrasive-skunk-640
+run_uuid: 216637513b174c568ea5d3f28db48f00
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746694238302
+status: 3
+tags: []
+user_id: cerdas

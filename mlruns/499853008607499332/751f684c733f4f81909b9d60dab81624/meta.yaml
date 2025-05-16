@@ -1,0 +1,15 @@
+artifact_uri: file:///home/cerdas/Project_Orientation/mlruns/499853008607499332/751f684c733f4f81909b9d60dab81624/artifacts
+end_time: 1746764394035
+entry_point_name: ''
+experiment_id: '499853008607499332'
+lifecycle_stage: active
+run_id: 751f684c733f4f81909b9d60dab81624
+run_name: able-skunk-824
+run_uuid: 751f684c733f4f81909b9d60dab81624
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746762206253
+status: 3
+tags: []
+user_id: cerdas

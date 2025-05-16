@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/579515437971696587/0ae924f6c54a445cbd2bde14c5719cfa/artifacts
+end_time: 1746608789809
+entry_point_name: ''
+experiment_id: '579515437971696587'
+lifecycle_stage: active
+run_id: 0ae924f6c54a445cbd2bde14c5719cfa
+run_name: popular-conch-815
+run_uuid: 0ae924f6c54a445cbd2bde14c5719cfa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746608739005
+status: 3
+tags: []
+user_id: cerdas

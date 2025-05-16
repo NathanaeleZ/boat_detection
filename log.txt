@@ -1,52 +1,179 @@
-<2025-05-06 12:40:52.981299>Boat detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 12:41:30.115691>Boat detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 12:42:02.846937>Boat detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 12:42:25.825650>Boat detected at :tensor([[282.4624, 477.9017,  13.6662,  45.1583,   0.9583]], device='cuda:0')
-<2025-05-06 15:14:30.666404> No detection
-<2025-05-06 15:15:11.645376> No detection
-<2025-05-06 15:20:18.284322> Boat#1 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 15:20:38.803872> Boat#0 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 15:29:04.922917> Boat#0 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 15:35:51.365043> Boat#0 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 15:36:03.057450> No detection
-<2025-05-06 15:36:46.671795> Boat#1 detected at :tensor([[282.4624, 477.9017,  13.6662,  45.1583,   0.9583]], device='cuda:0')
-<2025-05-06 15:37:05.155011> No detection
-<2025-05-06 15:37:11.640532> Boat#2 detected at :tensor([[388.0485, 418.0470,  12.6917,  45.3285,   0.9550]], device='cuda:0')
-<2025-05-06 16:12:11.576567> Boat#0 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:16:35.343150> Boat#0 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:18:17.759544> No detection
-<2025-05-06 16:20:54.480487> No detection
-<2025-05-06 16:21:11.778887> No detection
-<2025-05-06 16:22:46.229016> No detection
-<2025-05-06 16:22:48.901730> Boat#1 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:23:44.336408> No detection
-<2025-05-06 16:23:51.232105> Boat#1 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:25:45.102473> No detection
-<2025-05-06 16:25:47.724355> Boat#1 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:28:32.235214> No detection
-<2025-05-06 16:28:45.502632> Boat#1 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:28:56.662449> Boat#1 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 16:29:49.854859> Boat#1 detected at :tensor([[282.4624, 477.9017,  13.6662,  45.1583,   0.9583]], device='cuda:0')
-<2025-05-06 16:30:03.259640> Boat#1 detected at :tensor([[388.0485, 418.0470,  12.6917,  45.3285,   0.9550]], device='cuda:0')
-<2025-05-06 16:30:17.338409> No detection
-<2025-05-06 16:30:24.239221> Boat#2 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:30:32.041740> Boat#2 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 16:32:12.045245> No detection
-<2025-05-06 16:32:19.603179> Boat#1 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:32:28.173830> Boat#1 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 16:32:35.313094> Boat#1 detected at :tensor([[282.4624, 477.9017,  13.6662,  45.1583,   0.9583]], device='cuda:0')
-<2025-05-06 16:33:03.163986> Boat#1 detected at :tensor([[388.0485, 418.0470,  12.6917,  45.3285,   0.9550]], device='cuda:0')
-<2025-05-06 16:36:03.485860> No detection
-<2025-05-06 16:36:14.667731> Boat#2 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:36:24.187854> No detection
-<2025-05-06 16:36:32.909710> Boat#3 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 16:36:51.470147> Boat#3 detected at :tensor([[282.4624, 477.9017,  13.6662,  45.1583,   0.9583]], device='cuda:0')
-<2025-05-06 16:37:05.534034> No detection
-<2025-05-06 16:37:18.115728> Boat#4 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-06 16:37:24.714037> Boat#4 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-06 16:46:29.292203> Boat#4 detected at :tensor([[282.4624, 477.9017,  13.6662,  45.1583,   0.9583]], device='cuda:0')
-<2025-05-07 12:20:11.191385> No detection
-<2025-05-07 12:20:33.603992> Boat#1 detected at :tensor([[ 72.1351, 596.2767,  13.4263,  45.6124,   0.9483]], device='cuda:0')
-<2025-05-07 12:21:02.329203> Boat#1 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-07 13:55:49.054710> Boat#0 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
-<2025-05-07 13:56:42.214275> Boat#0 detected at :tensor([[204.6354, 503.2531,  12.8460,  45.2651,   0.9598]], device='cuda:0')
+<2025-05-09 15:47:48.946384> No detection
+<2025-05-09 15:48:08.984565> Boat#1 just appeared at :(71.43717956542969, 596.3652954101562)
+<2025-05-09 15:48:13.761760> Boat#1 detected at :(204.82542419433594, 503.2987976074219)
+<2025-05-09 15:48:49.559194> No detection
+<2025-05-09 15:48:50.255879> Boat#2 just appeared at :(282.5295104980469, 477.8844909667969)
+<2025-05-09 15:48:52.469686> Boat#2 detected at :(388.0537109375, 417.7371520996094)
+<2025-05-09 15:51:35.441048> No detection
+<2025-05-09 15:51:40.124375> Boat#1 just appeared at :71.44596.37
+<2025-05-09 15:51:42.632868> Boat#1 detected at :204.83503.30
+<2025-05-09 15:52:35.575588> No detection
+<2025-05-09 15:52:38.674005> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 15:52:42.575235> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 16:05:25.779760> Boat#0 detected at :71.4 , 596.4
+<2025-05-09 16:05:41.133943> Boat#0 detected at :282.5 , 477.9
+<2025-05-09 16:41:40> No detection
+<2025-05-09 16:41:50> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 16:42:28> No detection
+<2025-05-09 16:42:30> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 16:42:32> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 16:44:06> No detection
+<2025-05-09 16:44:09> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 16:44:13> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 16:44:36> No detection
+<2025-05-09 16:44:38> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 16:44:41> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 16:50:02> No detection
+<2025-05-09 16:50:05> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 16:50:07> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 16:51:39> No detection
+<2025-05-09 16:51:42> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 16:51:44> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 16:52:56> No detection
+<2025-05-09 16:52:59> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 16:53:02> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 17:02:06> No detection
+<2025-05-09 17:02:09> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 17:02:11> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 17:02:39> No detection
+<2025-05-09 17:02:41> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 17:02:44> Boat#1 detected at :204.8 , 503.3
+<2025-05-09 17:03:13> No detection
+<2025-05-09 17:03:14> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-09 17:03:16> Boat#1 detected at :204.8 , 503.3
+<2025-05-15 13:18:43> No detection
+<2025-05-15 13:18:59> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-15 13:45:04> Boat#0 detected at :282.5 , 477.9and IS HEADING TOWARDS the platform
+<2025-05-15 13:48:47> No detection
+<2025-05-15 13:48:50> Boat#1 just appeared at :71.4 , 596.4
+<2025-05-15 13:49:01> Boat#1 detected at :204.8 , 503.3 and IS HEADING TOWARDS the platform
+<2025-05-15 13:49:19> Boat#1 detected at :282.5 , 477.9 and IS HEADING TOWARDS the platform
+<2025-05-15 13:50:13> Boat#1 detected at :388.1 , 417.7 and IS HEADING TOWARDS the platform
+<2025-05-15 14:04:20> No detection
+<2025-05-15 14:18:12> No detection
+<2025-05-15 14:18:26> Boat#1 just appeared at :71 , 596
+<2025-05-15 14:36:23> Boat#0 detected at :283 , 478 and IS HEADING TOWARDS the platform
+<2025-05-15 14:36:55> Boat#0 detected at :388 , 418 and IS HEADING TOWARDS the platform
+<2025-05-15 14:51:50> No detection
+<2025-05-15 14:53:53> Boat#1 just appeared at :71 , 596, Distance : 6397.506760615603
+<2025-05-15 14:54:35> No detection
+<2025-05-15 14:54:43> Boat#1 just appeared at :71 , 596, Distance : 6398 m 
+<2025-05-15 15:12:55> No detection
+<2025-05-15 15:13:22> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:18:50> No detection
+<2025-05-15 15:19:01> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:18:58> Boat#1 detected at :205 , 503 and IS HEADING TOWARDS the platform
+<2025-05-15 15:24:33> No detection
+<2025-05-15 15:24:35> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:24:39> Boat#1 detected at :205 , 503 and IS HEADING TOWARDS the platform, Speed :11.2948772296193km/h
+<2025-05-15 15:25:21> No detection
+<2025-05-15 15:25:24> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:25:25> Boat#1 detected at :205 , 503 and IS HEADING TOWARDS the platform, Speed :45 km/h
+<2025-05-15 15:26:13> Boat#1 detected at :283 , 478 and IS HEADING TOWARDS the platform, Speed :0 km/h
+<2025-05-15 15:27:16> No detection
+<2025-05-15 15:27:19> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:27:21> Boat#1 detected at :205 , 503 and IS HEADING TOWARDS the platform, Speed :293 km/h
+<2025-05-15 15:33:03> No detection
+<2025-05-15 15:32:59> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:33:01> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :293 km/h, Distance : 4786 m
+<2025-05-15 15:33:15> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :21 km/h, Distance : 3977 m
+<2025-05-15 15:33:39> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :18 km/h, Distance : 2764 m
+<2025-05-15 15:36:38> No detection
+<2025-05-15 15:38:41> No detection
+<2025-05-15 15:39:39> No detection
+<2025-05-15 15:39:58> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:40:13> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :39 km/h, Distance : 4786 m
+<2025-05-15 15:40:25> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :25 km/h, Distance : 3977 m
+<2025-05-15 15:41:54> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :5 km/h, Distance : 2764 m
+<2025-05-15 15:56:56> No detection
+<2025-05-15 15:57:00> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:57:42> No detection
+<2025-05-15 15:57:45> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 15:58:47> No detection
+<2025-05-15 15:58:56> Boat#2 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 16:00:43> No detection
+<2025-05-15 16:00:45> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 16:01:41> No detection
+<2025-05-15 16:01:43> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 16:02:19> No detection
+<2025-05-15 16:02:21> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 16:04:34> No detection
+<2025-05-15 16:04:35> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 16:04:38> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :1952 km/h, Distance : 4786 m, Expected time: 00:00:08
+<2025-05-15 16:09:51> No detection
+<2025-05-15 16:09:54> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 16:09:55> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :5855 km/h, Distance : 4786 m, Expected time: 00:00:02
+<2025-05-15 16:11:26> No detection
+<2025-05-15 16:11:22> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 16:11:23> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :5855 km/h, Distance : 4786 m, Expected time: 00:00:02
+<2025-05-15 16:11:56> No detection
+<2025-05-15 16:12:00> Boat#2 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-15 16:12:07> Boat#2 detected and IS HEADING TOWARDS the platform, Speed :836 km/h, Distance : 4786 m, Expected time: 00:00:20
+<2025-05-15 16:21:50> No detection
+<2025-05-15 16:22:05> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-15 16:22:19> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :467 km/h, Distance : 4792 m, Expected time: 00:00:36
+<2025-05-15 16:22:30> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :624 km/h, Distance : 3312 m, Expected time: 00:00:19
+<2025-05-15 16:22:42> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :509 km/h, Distance : 2793 m, Expected time: 00:00:19
+<2025-05-16 10:58:18> No detection
+<2025-05-16 10:58:35> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 10:58:52> Boat#1 detected and is not heading towards the platform, Speed :385 km/h, Distance : 4792 m
+<2025-05-16 10:59:19> Boat#1 detected and is not heading towards the platform, Speed :254 km/h, Distance : 3312 m
+<2025-05-16 10:59:32> Boat#1 detected and is not heading towards the platform, Speed :470 km/h, Distance : 2793 m
+<2025-05-16 10:59:51> No detection
+<2025-05-16 10:59:57> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:00:05> Boat#1 detected and is not heading towards the platform, Speed :818 km/h, Distance : 4792 m
+<2025-05-16 11:02:02> No detection
+<2025-05-16 11:02:05> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:02:07> Boat#1 detected and is not heading towards the platform, Speed :3272 km/h, Distance : 4792 m
+<2025-05-16 11:02:26> No detection
+<2025-05-16 11:02:28> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:02:30> Boat#1 detected and is not heading towards the platform, Speed :3272 km/h, Distance : 4792 m
+<2025-05-16 11:11:06> No detection
+<2025-05-16 11:11:08> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:11:11> Boat#1 detected and is not heading towards the platform, Speed :2181 km/h, Distance : 4792 m
+<2025-05-16 11:13:14> No detection
+<2025-05-16 11:13:16> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:13:18> Boat#1 detected and is not heading towards the platform, Speed :3272 km/h, Distance : 4792 m
+<2025-05-16 11:14:12> No detection
+<2025-05-16 11:14:15> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:14:17> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :3272 km/h, Distance : 4792 m, Expected time: 00:00:05
+<2025-05-16 11:14:30> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :528 km/h, Distance : 3312 m, Expected time: 00:00:22
+<2025-05-16 11:14:45> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :407 km/h, Distance : 2793 m, Expected time: 00:00:24
+<2025-05-16 11:17:16> No detection
+<2025-05-16 11:17:20> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:17:22> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :3272 km/h, Distance : 4792 m, Expected time: 00:00:05
+<2025-05-16 11:17:26> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :1715 km/h, Distance : 3312 m, Expected time: 00:00:06
+<2025-05-16 11:17:30> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :1526 km/h, Distance : 2793 m, Expected time: 00:00:06
+<2025-05-16 11:19:11> No detection
+<2025-05-16 11:19:15> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:19:20> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :1309 km/h, Distance : 4792 m, Expected time: 00:00:13
+<2025-05-16 11:19:23> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :2287 km/h, Distance : 3312 m, Expected time: 00:00:05
+<2025-05-16 11:19:27> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :1526 km/h, Distance : 2793 m, Expected time: 00:00:06
+<2025-05-16 11:20:55> No detection
+<2025-05-16 11:21:04> Boat#2 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:21:40> Boat#2 detected and IS HEADING TOWARDS the platform, Speed :182 km/h, Distance : 4792 m, Expected time: 00:01:34
+<2025-05-16 11:28:57> No detection
+<2025-05-16 11:28:59> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:29:03> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :1636 km/h, Distance : 4792 m, Expected time: 00:00:10
+<2025-05-16 11:31:18> No detection
+<2025-05-16 11:31:22> Boat#2 just appeared at :388 , 323, Distance : 3312 m
+<2025-05-16 11:31:23> Boat#2 detected and IS HEADING TOWARDS the platform, Speed :6106 km/h, Distance : 2793 m, Expected time: 00:00:01
+<2025-05-16 11:32:58> No detection
+<2025-05-16 11:33:00> Boat#1 just appeared at :388 , 323, Distance : 3312 m
+<2025-05-16 11:33:01> Boat#1 detected and is not heading towards the platform, Speed :6106 km/h, Distance : 2793 m
+<2025-05-16 11:33:30> No detection
+<2025-05-16 11:33:36> Boat#2 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:33:39> Boat#2 detected and IS HEADING TOWARDS the platform, Speed :2181 km/h, Distance : 4792 m, Expected time: 00:00:07
+<2025-05-16 11:34:05> Boat#2 detected and is not heading towards the platform, Speed :264 km/h, Distance : 3312 m
+<2025-05-16 11:35:07> Boat#2 detected and is not heading towards the platform, Speed :98 km/h, Distance : 2793 m
+<2025-05-16 11:47:01> No detection
+<2025-05-16 11:47:03> Boat#1 just appeared at :105 , 97, Distance : 6612 m
+<2025-05-16 11:47:07> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :1636 km/h, Distance : 4792 m, Expected time: 00:00:10
+<2025-05-16 11:47:29> No detection
+<2025-05-16 11:47:34> Boat#1 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-16 11:47:37> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :1952 km/h, Distance : 4786 m, Expected time: 00:00:08
+<2025-05-16 11:47:57> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :147 km/h, Distance : 3977 m, Expected time: 00:01:37
+<2025-05-16 11:48:15> Boat#1 detected and IS HEADING TOWARDS the platform, Speed :243 km/h, Distance : 2764 m, Expected time: 00:00:40
+<2025-05-16 12:04:50> No detection
+<2025-05-16 12:05:13> Boat#2 just appeared at :71 , 596, Distance : 6398 m
+<2025-05-16 12:05:31> Boat#2 detected and IS HEADING TOWARDS the platform, Speed :325 km/h, Distance : 4786 m, Expected time: 00:00:52

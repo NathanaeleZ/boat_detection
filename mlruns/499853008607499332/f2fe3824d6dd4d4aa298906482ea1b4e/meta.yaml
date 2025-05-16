@@ -1,0 +1,15 @@
+artifact_uri: file:///home/cerdas/Project_Orientation/mlruns/499853008607499332/f2fe3824d6dd4d4aa298906482ea1b4e/artifacts
+end_time: 1746683263182
+entry_point_name: ''
+experiment_id: '499853008607499332'
+lifecycle_stage: active
+run_id: f2fe3824d6dd4d4aa298906482ea1b4e
+run_name: abrasive-sow-240
+run_uuid: f2fe3824d6dd4d4aa298906482ea1b4e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746683262581
+status: 4
+tags: []
+user_id: cerdas

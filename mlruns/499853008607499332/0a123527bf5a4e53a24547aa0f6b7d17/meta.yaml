@@ -1,0 +1,15 @@
+artifact_uri: file:///home/cerdas/Project_Orientation/mlruns/499853008607499332/0a123527bf5a4e53a24547aa0f6b7d17/artifacts
+end_time: 1746599445515
+entry_point_name: ''
+experiment_id: '499853008607499332'
+lifecycle_stage: active
+run_id: 0a123527bf5a4e53a24547aa0f6b7d17
+run_name: stylish-sow-808
+run_uuid: 0a123527bf5a4e53a24547aa0f6b7d17
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746599444944
+status: 4
+tags: []
+user_id: cerdas

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/cerdas/Project_Orientation/mlruns/499853008607499332/5a539006935b4c8d8186d9a5c5dcf968/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '499853008607499332'
+lifecycle_stage: active
+run_id: 5a539006935b4c8d8186d9a5c5dcf968
+run_name: thundering-loon-962
+run_uuid: 5a539006935b4c8d8186d9a5c5dcf968
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746762015616
+status: 1
+tags: []
+user_id: cerdas

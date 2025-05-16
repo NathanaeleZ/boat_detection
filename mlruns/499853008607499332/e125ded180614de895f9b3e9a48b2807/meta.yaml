@@ -1,0 +1,15 @@
+artifact_uri: file:///home/cerdas/Project_Orientation/mlruns/499853008607499332/e125ded180614de895f9b3e9a48b2807/artifacts
+end_time: 1746684889533
+entry_point_name: ''
+experiment_id: '499853008607499332'
+lifecycle_stage: active
+run_id: e125ded180614de895f9b3e9a48b2807
+run_name: bright-cub-43
+run_uuid: e125ded180614de895f9b3e9a48b2807
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746684889069
+status: 4
+tags: []
+user_id: cerdas

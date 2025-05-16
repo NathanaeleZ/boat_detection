@@ -1,0 +1,15 @@
+artifact_uri: file:///home/cerdas/Project_Orientation/mlruns/499853008607499332/723cb304c160484c9bf787b20e2fa374/artifacts
+end_time: 1746685377381
+entry_point_name: ''
+experiment_id: '499853008607499332'
+lifecycle_stage: active
+run_id: 723cb304c160484c9bf787b20e2fa374
+run_name: efficient-snipe-112
+run_uuid: 723cb304c160484c9bf787b20e2fa374
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746685376899
+status: 4
+tags: []
+user_id: cerdas

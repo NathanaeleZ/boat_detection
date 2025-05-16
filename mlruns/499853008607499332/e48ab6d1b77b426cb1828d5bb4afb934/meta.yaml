@@ -1,0 +1,15 @@
+artifact_uri: file:///home/cerdas/Project_Orientation/mlruns/499853008607499332/e48ab6d1b77b426cb1828d5bb4afb934/artifacts
+end_time: 1746694861316
+entry_point_name: ''
+experiment_id: '499853008607499332'
+lifecycle_stage: active
+run_id: e48ab6d1b77b426cb1828d5bb4afb934
+run_name: adorable-fly-325
+run_uuid: e48ab6d1b77b426cb1828d5bb4afb934
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746694838090
+status: 3
+tags: []
+user_id: cerdas
