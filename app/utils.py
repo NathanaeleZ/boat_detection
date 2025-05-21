@@ -36,6 +36,7 @@ def expected_time(speed,distance):
     speed=speed/3.6 # to m/s
     distance=distance
     expected_time=distance/speed
+    print(time.strftime('%H:%M:%S', time.gmtime(expected_time)))
     return time.strftime('%H:%M:%S', time.gmtime(expected_time))
 
 def draw_line(points): # points = List of point = "location":boat_point, "time":d

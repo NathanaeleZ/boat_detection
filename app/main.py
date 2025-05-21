@@ -29,19 +29,21 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/",response_class=HTMLResponse)
 async def read_root(request: Request):
     contents=""
-    with open("log.txt", "r", encoding="utf-8") as f:
-        lines=f.readlines()
-    ptr=0
-    for line in lines:
-        if ptr< len(lines)-20:
-            ptr+=1
-        else:
-            contents+=line
+    try:
+        f=open("log.txt", "r", encoding="utf-8")
+    except:
+        print("Nofile")
+    else:
+        with f:
+            lines=f.readlines()
+            ptr=0
+            for line in lines:
+                if ptr< len(lines)-20:
+                    ptr+=1
+                else:
+                    contents+=line
 
     image_path = Path("photo.jpg")
-    if not image_path.is_file():
-        return {"error": "Image not found on the server"}
-
     return templates.TemplateResponse("index.html", {"request": request, 
               "image_name": image_path,
               "text": contents,
@@ -52,13 +54,27 @@ async def read_root(request: Request):
 @app.post("/upload")
 def upload(file: UploadFile = File(...)):
     try:
+        
+
         contents = file.file.read()
+
         with open("photo.jpg", 'wb') as f:
             f.write(contents)
-    except Exception:
-        raise HTTPException(status_code=500, detail='Something went wrong')
+
+
+    except HTTPException as e:
+        # Re-lève l’exception telle quelle
+        raise e
+
+
+    except Exception as e:
+        # Erreur inconnue
+        raise HTTPException(status_code=500, detail="Internal server error.")
+
+
     finally:
         file.file.close()
+
 
     try:
         shutil.rmtree("runs/obb/predict")
@@ -78,9 +94,14 @@ def upload(file: UploadFile = File(...)):
     global list_point
     if result.obb.conf.numel(): # If detection
         global num_boat
-        with open("log.txt", "r", encoding="utf-8") as f: #Read last lines
-            lines=f.readlines()
-            last_line=lines[-1].strip() if lines else "No detection"
+        try:
+            f=open("log.txt", "r", encoding="utf-8") #Read last lines
+        except FileNotFoundError:
+            last_line="No detection"
+        else:
+            with f:
+                lines=f.readlines()
+                last_line=lines[-1].strip() if lines else "No detection"
         boat_point=(0.0,0.0)
         platform_point=(0.0,0.0)
         for detection in result.obb:
@@ -105,9 +126,9 @@ def upload(file: UploadFile = File(...)):
             if platform_point!=(0.0,0.0):
                 if is_point_in_cone(list_point[-2]["location"],boat_point,platform_point,15):
                     speedd=speed(list_point[-2],list_point[-1],SCALE)
-                    text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" IS HEADING TOWARDS the platform, Speed :"+str("%.0f" %speedd)+" km/h"", Distance : "+str("%.0f" % dst)+" m, Expected time: "+expected_time(speedd,dst)+"\n"
+                    text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" IS HEADING TOWARDS the platform,\n Speed :"+str("%.0f" %speedd)+" km/h"", Distance : "+str("%.0f" % dst)+" m, Expected time: "+expected_time(speedd,dst)+"\n"
                 else:
-                    text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" is not heading towards the platform, Speed :"+str("%.0f" %speed(list_point[-2],list_point[-1],SCALE))+" km/h"", Distance : "+str("%.0f" % dst)+" m\n"
+                    text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" is not heading towards the platform,\n Speed :"+str("%.0f" %speed(list_point[-2],list_point[-1],SCALE))+" km/h"", Distance : "+str("%.0f" % dst)+" m\n"
             draw_line(list_point)
 
         else: # Platform but no boat
@@ -118,7 +139,7 @@ def upload(file: UploadFile = File(...)):
         text="<"+str(d)+"> "+"No detection"+"\n"
         list_point=list()
 
-    with open("log.txt", "a", encoding="utf-8") as f:
+    with open("log.txt", "a+", encoding="utf-8") as f:
         f.write(text)
 
     return {"message Successfully uploaded"}
