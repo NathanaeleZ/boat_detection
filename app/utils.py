@@ -39,9 +39,12 @@ def expected_time(speed,distance):
     print(time.strftime('%H:%M:%S', time.gmtime(expected_time)))
     return time.strftime('%H:%M:%S', time.gmtime(expected_time))
 
-def draw_line(points): # points = List of point = "location":boat_point, "time":d
+async def draw_line(points,predict_counter): # points = List of point = "location":boat_point, "time":d
     # Load the image
-    image = cv2.imread("runs/obb/predict/photo.jpg")
+    if predict_counter==1:
+        image = cv2.imread("runs/obb/predict/photo.jpg")
+    else:
+        image = cv2.imread("runs/obb/predict"+str(predict_counter)+"/photo.jpg")
     # Define the color (BGR format) and thickness of the line
     color = (0, 255, 0) 
     thickness = 2
@@ -52,4 +55,7 @@ def draw_line(points): # points = List of point = "location":boat_point, "time":
         cv2.line(image, (int(tamp[0]), int(tamp[1])), (int(point["location"][0]), int(point["location"][1])), color, thickness)
         tamp=point["location"]
     # Save the modified image
-    cv2.imwrite('runs/obb/predict/photo.jpg', image)
+    if predict_counter==1:
+        cv2.imwrite("runs/obb/predict/photo.jpg",image)
+    else:
+        cv2.imwrite("runs/obb/predict"+str(predict_counter)+"/photo.jpg",image)

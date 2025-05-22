@@ -1,14 +1,13 @@
 
+import asyncio
 from datetime import datetime
 
 from pathlib import Path
 
-import shutil
-
 from fastapi import FastAPI, File, UploadFile, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 
 from ultralytics import YOLO
 
@@ -16,12 +15,13 @@ from app.utils import *
 
 num_boat=0
 SCALE = 10
+predict_counter=1
 MODEL_PATH="runs/obb/model/best.pt"
 list_point=list()
 
 app = FastAPI()
 
-app.mount("/runs/obb/predict", StaticFiles(directory="runs/obb/predict"), name="static")
+app.mount("/runs/obb", StaticFiles(directory="runs/obb"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
@@ -43,7 +43,13 @@ async def read_root(request: Request):
                 else:
                     contents+=line
 
-    image_path = Path("photo.jpg")
+    global predict_counter
+    if predict_counter==1:
+        image_path = Path("/runs/obb/predict/photo.jpg")
+    else:
+        image_path = Path("/runs/obb/predict"+str(predict_counter)+"/photo.jpg")
+    
+    
     return templates.TemplateResponse("index.html", {"request": request, 
               "image_name": image_path,
               "text": contents,
@@ -76,21 +82,21 @@ def upload(file: UploadFile = File(...)):
         file.file.close()
 
 
-    try:
-        shutil.rmtree("runs/obb/predict")
-    except OSError as e:
-        print(f"Error:{ e.strerror}")
     
     # Load a model
     model = YOLO(MODEL_PATH)  # load an official model
     # Predict with the model
     results = model(source="photo.jpg",imgsz=768,conf=0.25,save=True)  # predict on an image
 
+    global predict_counter
+    predict_counter+=1
+
     d=datetime.now().replace(microsecond=0)
 
     #Analyse detection
     result=results[0]    
 
+    
     global list_point
     if result.obb.conf.numel(): # If detection
         global num_boat
@@ -129,7 +135,7 @@ def upload(file: UploadFile = File(...)):
                     text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" IS HEADING TOWARDS the platform,\n Speed :"+str("%.0f" %speedd)+" km/h"", Distance : "+str("%.0f" % dst)+" m, Expected time: "+expected_time(speedd,dst)+"\n"
                 else:
                     text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" is not heading towards the platform,\n Speed :"+str("%.0f" %speed(list_point[-2],list_point[-1],SCALE))+" km/h"", Distance : "+str("%.0f" % dst)+" m\n"
-            draw_line(list_point)
+            asyncio.run(draw_line(list_point,predict_counter))
 
         else: # Platform but no boat
             text="<"+str(d)+"> "+"No detection"+"\n"
@@ -141,5 +147,4 @@ def upload(file: UploadFile = File(...)):
 
     with open("log.txt", "a+", encoding="utf-8") as f:
         f.write(text)
-
-    return {"message Successfully uploaded"}
+    return RedirectResponse("/",status_code=303)
