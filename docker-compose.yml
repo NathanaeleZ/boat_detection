@@ -1,8 +1,14 @@
 services:
+  test:
+    build: 
+      context: .
+      dockerfile : Dockerfile.demo
+    volumes:
+    - ./tests:/tests
   app:
     build: 
       context: .
-    command: ["fastapi", "run", "main.py", "--port", "80"]
+      dockerfile : Dockerfile
     volumes:
     - ./app:/app
     ports:
