@@ -1,7 +1,7 @@
 from time import sleep
 import requests
 
-INTERVAL_TIME=5
+INTERVAL_TIME=8
 
 def satellite():
     for _ in range(20):

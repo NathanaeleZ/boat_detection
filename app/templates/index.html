@@ -1,85 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="refresh" content="20">
-   <title>Boats Detection</title>
-   <style>
-       body {
-           margin: 0;
-           font-family: 'Courier New', Courier, monospace;
-           background-color: #000; /* Fond noir */
-           color: #00d2be; /* Couleur Petronas */
-           font-size: 200%;
-       }
-       .container {
-           display: flex;
-           align-items: center;
-           padding: 20px;
-       }
-       .container img {
-           margin-right: 20px;
-           max-width: 700px;
-           border: 2px solid #00d2be; /* Bordure Petronas */
-       }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="refresh" content="20" />
+  <title>Boats Detection Dashboard</title>
+  <style>
+	body {
+  	margin: 0;
+  	font-family: 'Courier New', Courier, monospace;
+  	background-color: #ffffff; /* Fond blanc */
+  	color: #000000;
+	}
 
-       #div_horloge {
-            background-color: #001f1f; /* Fond sombre pour le terminal */
-           padding: 20px;
-           border-radius: 5px;
-           box-shadow: 0 0 10px #00d2be;
-       }
-       .terminal {
-           background-color: #001f1f; /* Fond sombre pour le terminal */
-           padding: 20px;
-           border-radius: 5px;
-           box-shadow: 0 0 10px #00d2be;
-       }
-       .terminal h2, .terminal pre {
-           margin: 0;
-       }
-       .terminal h2 {
-           margin-bottom: 10px;
-       }
-       h1 {
-        text-align: center;
-       }
-   </style>
+
+	header {
+  	display: flex;
+  	align-items: center;
+  	padding: 15px 30px;
+  	background-color: #00B1A9; /* Couleur Petronas */
+  	box-shadow: 0 0 15px #00B1A9;
+	}
+
+
+	header img {
+  	height: 50px;
+  	margin-right: 20px;
+	}
+
+
+	header h1 {
+  	font-size: 1.8em;
+  	color: #ffffff; /* Titre en blanc */
+  	animation: fadeIn 1.2s ease-in-out;
+	}
+
+
+	#div_horloge {
+  	margin-left: auto;
+  	font-size: 1.5em;
+  	color: #ffffff;
+  	background-color: rgba(0, 0, 0, 0.2);
+  	padding: 10px 20px;
+  	border-radius: 10px;
+  	box-shadow: 0 0 10px #ffffff;
+  	animation: fadeIn 1s ease-in-out;
+	}
+
+
+	main {
+  	display: flex;
+  	flex-direction: row;
+  	justify-content: space-around;
+  	align-items: flex-start;
+  	padding: 40px;
+  	animation: fadeIn 1.5s ease-in-out;
+	}
+
+
+	.image-container img {
+  	max-width: 700px;
+  	border: 4px solid #00B1A9;
+  	border-radius: 10px;
+  	box-shadow: 0 0 15px #00B1A9;
+  	transition: transform 0.3s ease-in-out;
+	}
+
+
+	.image-container img:hover {
+  	transform: scale(1.02);
+	}
+
+
+	.terminal {
+  	background-color: #f0f0f0;
+  	padding: 30px;
+  	border-radius: 10px;
+  	box-shadow: 0 0 20px #cccccc;
+  	max-width: 500px;
+  	width: 100%;
+  	color: #000;
+  	font-size: 1.1em;
+	}
+
+
+	.terminal h2 {
+  	margin-top: 0;
+  	margin-bottom: 15px;
+  	color: #00B1A9;
+  	border-bottom: 1px solid #00B1A9;
+  	padding-bottom: 10px;
+	}
+
+
+	@keyframes fadeIn {
+  	from { opacity: 0; transform: translateY(-10px); }
+  	to { opacity: 1; transform: translateY(0); }
+	}
+  </style>
 </head>
 <body>
-    <h1 id="div_horloge"></h1>
- 
-<script type="text/javascript">
-window.onload=function() {
-  horloge('div_horloge');
-};
- 
-function horloge(el) {
-  if(typeof el=="string") { el = document.getElementById(el); }
-  function actualiser() {
-    var date = new Date();
-    var str = date.getHours();
-    str += ':'+(date.getMinutes()<10?'0':'')+date.getMinutes();
-    str += ':'+(date.getSeconds()<10?'0':'')+date.getSeconds();
-    el.innerHTML = str;
-  }
-  actualiser();
-  setInterval(actualiser,1000);
-}
-const ws= new WebSocket("ws://localhost:80/ws");
-ws.onmessage = (event) =>{
-    if (event.data == "reload"){
-        window.location.reload();
-    }
-};
-</script>
-   <div class="container">
-       <img src={{image_name}} alt="Satellite image">
-       <div class="terminal">
-           <h2>Boat Detection</h2>
-           <pre>{{text}}</pre>
-       </div>
-   </div>
+  <header>
+	<img src="{{logo_path}}" alt="Logo">
+	<h1>Boats Detection Dashboard</h1>
+	<div id="div_horloge"></div>
+  </header>
+
+
+  <main>
+	<div class="image-container">
+  	<img src="{{image_name}}" alt="Satellite image" />
+	</div>
+	<div class="terminal">
+  	<h2>Boat Detection Logs</h2>
+  	<pre>{{text}}</pre>
+	</div>
+  </main>
+
+
+  <script>
+	window.onload = function() {
+  	horloge('div_horloge');
+	};
+
+
+	function horloge(el) {
+  	if (typeof el == "string") el = document.getElementById(el);
+  	function actualiser() {
+    	var date = new Date();
+    	var str = date.getHours();
+    	str += ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+    	str += ':' + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
+    	el.innerHTML = str;
+  	}
+  	actualiser();
+  	setInterval(actualiser, 1000);
+	}
+
+
+	const ws = new WebSocket("ws://localhost:80/ws");
+	ws.onmessage = (event) => {
+  	if (event.data === "reload") {
+    	window.location.reload();
+  	}
+	};
+  </script>
 </body>
 </html>
+
+
+
+

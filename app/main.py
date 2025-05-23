@@ -25,6 +25,7 @@ list_point=list()
 
 app = FastAPI()
 
+app.mount("/templates/static", StaticFiles(directory="templates/static"), name="static")
 app.mount("/runs/obb", StaticFiles(directory="runs/obb"), name="static")
 
 templates = Jinja2Templates(directory="templates")
@@ -53,11 +54,12 @@ async def index(request: Request):
     else:
         image_path = Path("/runs/obb/predict"+str(predict_counter)+"/photo.jpg")
     
-    
+    logo_path=Path("/templates/static/logo.png")
     return templates.TemplateResponse("index.html", {"request": request, 
               "image_name": image_path,
               "text": contents,
-              "now": datetime.now().replace(microsecond=0)
+              "now": datetime.now().replace(microsecond=0),
+              "logo_path":logo_path
             }
         )
 
@@ -96,8 +98,7 @@ async def upload(file: UploadFile = File(...)):
     d=datetime.now().replace(microsecond=0)
 
     #Analyse detection
-    result=results[0]    
-
+    result=results[0]
     
     global list_point
     if result.obb.conf.numel(): # If detection
@@ -155,7 +156,7 @@ async def upload(file: UploadFile = File(...)):
             await client.send_text("reload")
         except:
             pass
-        
+
     return {"message":"done"}
 
 @app.websocket("/ws")
