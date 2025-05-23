@@ -114,13 +114,22 @@ async def upload(file: UploadFile = File(...)):
         platform_point=(0.0,0.0)
         for detection in result.obb:
             if detection.cls.item()==15.0:
-                platform_point=(detection.xywhr.tolist()[0][:2][0],detection.xywhr.tolist()[0][:2][1])
-                print(platform_point)
+                platform_point=(detection.xywhr.tolist()[0][0],detection.xywhr.tolist()[0][1])
             else:
                 boat_point=(detection.xywhr.tolist()[0][:2][0],detection.xywhr.tolist()[0][:2][1])
-                new_entry={
+                theta=detection.xywhr.tolist()[0][-1]
+                (width,height)=(detection.xywhr.tolist()[0][2],detection.xywhr.tolist()[0][3])
+                conf=detection.conf.item()
+                print(conf)
+                # Au moment d'enregistrer comparer les bateaux avec calcul mathématique et si 2 identique on leur affecte le même id
+                #(width,height)=(detection.xywhr.tolist()[0][:2][2],detection.xywhr.tolist()[0][:2][3])
+                
+                new_entry={ # Enregistrer dans le tableau toutes les infos du bateau (coordonnées, id, temsp , taille, theta , autres si possible)
                     "location":boat_point,
-                    "time":d
+                    "time":d,
+                    "size":(width,height),
+                    "angle":theta,
+                    "conf":conf
                 }
                 list_point.append(new_entry)
 
@@ -155,7 +164,6 @@ async def upload(file: UploadFile = File(...)):
             await client.send_text("reload")
         except:
             pass
-        
     return {"message":"done"}
 
 @app.websocket("/ws")
