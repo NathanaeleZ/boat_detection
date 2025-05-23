@@ -4,7 +4,7 @@ from datetime import datetime
 
 from pathlib import Path
 
-from fastapi import FastAPI, File, UploadFile, HTTPException, Request
+from fastapi import FastAPI, File, UploadFile, HTTPException, Request, WebSocket
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -13,6 +13,10 @@ from ultralytics import YOLO
 
 from app.utils import *
 
+from starlette.responses import RedirectResponse
+from starlette.status import HTTP_302_FOUND,HTTP_303_SEE_OTHER
+
+clients= []
 num_boat=0
 SCALE = 10
 predict_counter=1
@@ -27,7 +31,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/",response_class=HTMLResponse)
-async def read_root(request: Request):
+async def index(request: Request):
     contents=""
     try:
         f=open("log.txt", "r", encoding="utf-8")
@@ -58,10 +62,8 @@ async def read_root(request: Request):
         )
 
 @app.post("/upload")
-def upload(file: UploadFile = File(...)):
+async def upload(file: UploadFile = File(...)):
     try:
-        
-
         contents = file.file.read()
 
         with open("photo.jpg", 'wb') as f:
@@ -135,7 +137,7 @@ def upload(file: UploadFile = File(...)):
                     text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" IS HEADING TOWARDS the platform,\n Speed :"+str("%.0f" %speedd)+" km/h"", Distance : "+str("%.0f" % dst)+" m, Expected time: "+expected_time(speedd,dst)+"\n"
                 else:
                     text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" is not heading towards the platform,\n Speed :"+str("%.0f" %speed(list_point[-2],list_point[-1],SCALE))+" km/h"", Distance : "+str("%.0f" % dst)+" m\n"
-            asyncio.run(draw_line(list_point,predict_counter))
+            await draw_line(list_point,predict_counter)
 
         else: # Platform but no boat
             text="<"+str(d)+"> "+"No detection"+"\n"
@@ -147,4 +149,21 @@ def upload(file: UploadFile = File(...)):
 
     with open("log.txt", "a+", encoding="utf-8") as f:
         f.write(text)
-    return RedirectResponse("/",status_code=303)
+
+    for client in clients:
+        try:
+            await client.send_text("reload")
+        except:
+            pass
+        
+    return {"message":"done"}
+
+@app.websocket("/ws")
+async def web_socket_endpoint(websocket : WebSocket):
+    await websocket.accept()
+    clients.append(websocket)
+    try:
+        while True:
+            await websocket.receive_text()
+    except:
+        clients.remove(websocket)

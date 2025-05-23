@@ -23,7 +23,6 @@ def satellite():
         requests.post(url="http://app:80/upload", files=files)
         sleep(INTERVAL_TIME)
         for i in range(0,9):
-            print("POOOOST")
             f = open("images_satellite/boat"+str(i)+".jpg", 'rb')
             files = {"file": (f.name, f, "multipart/form-data")}
             requests.post(url="http://app:80/upload", files=files)
