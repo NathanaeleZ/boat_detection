@@ -120,7 +120,6 @@ async def upload(file: UploadFile = File(...)):
                 theta=detection.xywhr.tolist()[0][-1]
                 (width,height)=(detection.xywhr.tolist()[0][2],detection.xywhr.tolist()[0][3])
                 conf=detection.conf.item()
-                print(conf)
                 # Au moment d'enregistrer comparer les bateaux avec calcul mathématique et si 2 identique on leur affecte le même id
                 #(width,height)=(detection.xywhr.tolist()[0][:2][2],detection.xywhr.tolist()[0][:2][3])
                 
