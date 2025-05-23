@@ -1,5 +1,4 @@
-
-import asyncio
+import openpyxl
 from datetime import datetime
 
 from pathlib import Path
@@ -7,21 +6,19 @@ from pathlib import Path
 from fastapi import FastAPI, File, UploadFile, HTTPException, Request, WebSocket
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse
 
 from ultralytics import YOLO
 
 from app.utils import *
 
-from starlette.responses import RedirectResponse
-from starlette.status import HTTP_302_FOUND,HTTP_303_SEE_OTHER
 
 clients= []
-num_boat=0
+boat_counter=[0]
 SCALE = 10
 predict_counter=1
 MODEL_PATH="runs/obb/model/best.pt"
-list_point=list()
+boat_list=list()
 
 app = FastAPI()
 
@@ -33,19 +30,6 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/",response_class=HTMLResponse)
 async def index(request: Request):
     contents=""
-    try:
-        f=open("log.txt", "r", encoding="utf-8")
-    except:
-        print("Nofile")
-    else:
-        with f:
-            lines=f.readlines()
-            ptr=0
-            for line in lines:
-                if ptr< len(lines)-20:
-                    ptr+=1
-                else:
-                    contents+=line
 
     global predict_counter
     if predict_counter==1:
@@ -82,8 +66,6 @@ async def upload(file: UploadFile = File(...)):
 
     finally:
         file.file.close()
-
-
     
     # Load a model
     model = YOLO(MODEL_PATH)  # load an official model
@@ -99,19 +81,12 @@ async def upload(file: UploadFile = File(...)):
     result=results[0]    
 
     
-    global list_point
+    global boat_list
     if result.obb.conf.numel(): # If detection
-        global num_boat
-        try:
-            f=open("log.txt", "r", encoding="utf-8") #Read last lines
-        except FileNotFoundError:
-            last_line="No detection"
-        else:
-            with f:
-                lines=f.readlines()
-                last_line=lines[-1].strip() if lines else "No detection"
+        global boat_counter
         boat_point=(0.0,0.0)
         platform_point=(0.0,0.0)
+
         for detection in result.obb:
             if detection.cls.item()==15.0:
                 platform_point=(detection.xywhr.tolist()[0][0],detection.xywhr.tolist()[0][1])
@@ -120,40 +95,48 @@ async def upload(file: UploadFile = File(...)):
                 theta=detection.xywhr.tolist()[0][-1]
                 (width,height)=(detection.xywhr.tolist()[0][2],detection.xywhr.tolist()[0][3])
                 conf=detection.conf.item()
-                # Au moment d'enregistrer comparer les bateaux avec calcul mathématique et si 2 identique on leur affecte le même id
-                #(width,height)=(detection.xywhr.tolist()[0][:2][2],detection.xywhr.tolist()[0][:2][3])
-                
-                new_entry={ # Enregistrer dans le tableau toutes les infos du bateau (coordonnées, id, temsp , taille, theta , autres si possible)
+
+                boat_counter=boat_management(boat_list,boat_point,(width,height),theta,conf,boat_counter)
+
+                new_entry={
+                    "id":boat_counter,
                     "location":boat_point,
                     "time":d,
                     "size":(width,height),
                     "angle":theta,
-                    "conf":conf
+                    "conf":conf,
+                    "predict_number":predict_counter,
+                    "speed":speed,
+                    "towards_platform":towards_platform
                 }
-                list_point.append(new_entry)
+                boat_list.append(new_entry)
+        
+        current_boat_list=[]
+        for boat in boat_list["predict_number"]==predict_counter:
+            current_boat_list.append(boat["id"])
+        predict_list.append(predict_counter,current_boat_list)
 
         if "No detection" in last_line and boat_point!=(0.0,0.0): # If last detection was empty
             dst=distance.euclidean(boat_point, platform_point)*SCALE
-            num_boat+=1
-            text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" just appeared, Distance : "+str("%.0f" % (dst))+" m\n"
+            text="<"+str(d)+"> "+"Boat#"+str(boat_counter)+" just appeared, Distance : "+str("%.0f" % (dst))+" m\n"
 
         elif boat_point!=(0.0,0.0): # If last detection was the same boat
             dst=distance.euclidean(boat_point, platform_point)*SCALE
             if platform_point!=(0.0,0.0):
-                if is_point_in_cone(list_point[-2]["location"],boat_point,platform_point,15):
-                    speedd=speed(list_point[-2],list_point[-1],SCALE)
-                    text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" IS HEADING TOWARDS the platform,\n Speed :"+str("%.0f" %speedd)+" km/h"", Distance : "+str("%.0f" % dst)+" m, Expected time: "+expected_time(speedd,dst)+"\n"
+                if is_point_in_cone(boat_list[-2]["location"],boat_point,platform_point,15):
+                    speedd=speed(boat_list[-2],boat_list[-1],SCALE)
+                    text="<"+str(d)+"> "+"Boat#"+str(boat_counter)+" IS HEADING TOWARDS the platform,\n Speed :"+str("%.0f" %speedd)+" km/h"", Distance : "+str("%.0f" % dst)+" m, Expected time: "+expected_time(speedd,dst)+"\n"
                 else:
-                    text="<"+str(d)+"> "+"Boat#"+str(num_boat)+" is not heading towards the platform,\n Speed :"+str("%.0f" %speed(list_point[-2],list_point[-1],SCALE))+" km/h"", Distance : "+str("%.0f" % dst)+" m\n"
-            await draw_line(list_point,predict_counter)
+                    text="<"+str(d)+"> "+"Boat#"+str(boat_counter)+" is not heading towards the platform,\n Speed :"+str("%.0f" %speed(boat_list[-2],boat_list[-1],SCALE))+" km/h"", Distance : "+str("%.0f" % dst)+" m\n"
+            await draw_line(boat_list,predict_counter)
 
         else: # Platform but no boat
             text="<"+str(d)+"> "+"No detection"+"\n"
-            list_point=list()
+            boat_list=list()
 
     else: #If no detection
         text="<"+str(d)+"> "+"No detection"+"\n"
-        list_point=list()
+        boat_list=list()
 
     with open("log.txt", "a+", encoding="utf-8") as f:
         f.write(text)

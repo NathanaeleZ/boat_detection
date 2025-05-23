@@ -2,6 +2,7 @@ import time
 import numpy as np
 import cv2
 from scipy.spatial import distance
+import math
 
 def is_point_in_cone(center_point,direction_point,platform_point,angle_cone): # Parameter in euclidian coordinate
     center_point=np.array(center_point)
@@ -59,3 +60,25 @@ async def draw_line(points,predict_counter): # points = List of point = "locatio
         cv2.imwrite("runs/obb/predict/photo.jpg",image)
     else:
         cv2.imwrite("runs/obb/predict"+str(predict_counter)+"/photo.jpg",image)
+
+
+def boat_management(boat_list, xy, wh, theta, conf, boat_counter, dist_thresh=80, size_thresh=0.4, angle_thresh=20):
+
+    for entry in boat_list:
+        dist = math.sqrt((xy[0] - entry["location"][0])**2 + (xy[1] - entry["location"][1])**2)
+        if dist > dist_thresh:
+            continue
+        prev_area = entry["size"][0] * entry["size"][1]
+        curr_area = wh[0] * wh[1]
+        size_diff = abs(curr_area - prev_area) / (prev_area + 1e-6)
+        if size_diff > size_thresh:
+            continue
+        angle_diff = abs(theta - entry["angle"]) % 180
+        if angle_diff > 90:
+            angle_diff = 180 - angle_diff
+        if angle_diff > angle_thresh:
+            continue
+        return entry["id"]  # déjà connu
+    # Nouveau bateau
+    boat_counter[0] += 1
+    return boat_counter[0]
